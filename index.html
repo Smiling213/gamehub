@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GameHub — marketplace game digital dan fisik. Temukan game favoritmu.">
+<title>GameHub — Marketplace Game</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--panel2:#18233b;--text:#f4f7ff;--muted:#9eabc4;--accent:#8b5cf6;--cyan:#22d3ee;--line:#26334e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#28315d 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,Segoe UI,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
+header{border-bottom:1px solid #ffffff12;background:#0b1020dd;position:sticky;top:0;z-index:5;backdrop-filter:blur(14px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;font-size:23px;letter-spacing:-1px}.brand span{color:var(--cyan)}
+nav{display:flex;gap:24px;color:var(--muted)}nav a:hover{color:white}.actions{display:flex;gap:10px;align-items:center}
+.btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(110deg,var(--accent),#6366f1);color:white;font-weight:750;cursor:pointer}.btn.secondary{background:#202b45;border:1px solid var(--line)}.cart{position:relative}
+.count{display:inline-grid;place-items:center;background:var(--cyan);color:#06121c;border-radius:99px;width:20px;height:20px;font-size:11px;margin-left:5px;font-weight:900}
+.hero{padding:70px 0 48px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+h1{font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-3px;margin:15px 0}.hero p{color:var(--muted);font-size:17px;max-width:570px}.hero-art{min-height:270px;border:1px solid #ffffff20;border-radius:28px;background:linear-gradient(135deg,#32256c,#132c51 55%,#0d7b8a);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 25px 80px #0007}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #ffffff30;border-radius:50%;width:300px;height:300px}.hero-art:after{width:420px;height:420px}.hero-art strong{font-size:clamp(38px,6vw,68px);letter-spacing:-4px;z-index:1;text-shadow:0 8px 30px #0008}.hero-art small{position:absolute;bottom:22px;color:#dbeafe;letter-spacing:3px}
+.toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:20px 0 24px;flex-wrap:wrap}.search{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 15px;color:white;width:min(360px,100%);outline:none}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:9px 13px;border-radius:99px;cursor:pointer}.filter.active{background:#35266a;color:white;border-color:#8064ef}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:25px 0 15px}.section-head h2{font-size:27px;margin:0}.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:70px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#6552b8}.cover{height:155px;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;font-size:26px;font-weight:950;letter-spacing:-1px;text-shadow:0 4px 20px #0008}.cover small{display:block;font-size:10px;letter-spacing:3px;margin-top:8px}.card-body{padding:15px}.tag{font-size:11px;color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:1px}.card h3{margin:6px 0;font-size:17px}.meta{color:var(--muted);font-size:12px}.price-row{display:flex;align-items:center;justify-content:space-between;margin-top:16px}.price{font-size:18px;font-weight:850}.add{border:1px solid #6650c2;color:white;background:#30245d;border-radius:10px;padding:8px 11px;cursor:pointer}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:50px}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:0 0 65px}.info div{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:16px}.info b{display:block;margin-bottom:5px}.info p{margin:0;color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:13px}.footer-in{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.drawer-bg{position:fixed;inset:0;background:#0009;z-index:10;display:none}.drawer-bg.show{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(420px,100%);background:#10182b;padding:24px;overflow:auto;border-left:1px solid var(--line)}.drawer-head{display:flex;justify-content:space-between;align-items:center}.close{background:none;color:white;border:0;font-size:26px;cursor:pointer}.cart-item{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-item small{display:block;color:var(--muted)}.cart-total{display:flex;justify-content:space-between;font-size:18px;font-weight:850;margin:22px 0}.notice{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr;padding-top:48px}.hero-art{min-height:210px}nav{display:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.cover{height:125px;font-size:20px}.card-body{padding:11px}.price-row{align-items:flex-start;gap:8px;flex-direction:column}.info{grid-template-columns:1fr}.hero{gap:24px}.hero h1{letter-spacing:-2px}.brand{font-size:20px}.nav{height:64px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#">GAME<span>HUB</span></a>
+  <nav><a href="#katalog">Katalog</a><a href="#cara-kerja">Cara Kerja</a><a href="#tentang">Tentang</a></nav>
+  <div class="actions"><button class="btn secondary cart" onclick="openCart()">Keranjang <span class="count" id="count">0</span></button></div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+ <div><div class="eyebrow">Marketplace game pilihan</div><h1>Temukan game.<br><span style="color:var(--cyan)">Mulai petualangan.</span></h1>
+ <p>Jelajahi koleksi game PC dan konsol. Bandingkan pilihan, masukkan ke keranjang, lalu hubungi penjual untuk menyelesaikan pesanan.</p>
+ <a class="btn" href="#katalog">Jelajahi katalog</a></div>
+ <div class="hero-art"><strong>PLAY<br>MORE.</strong><small>YOUR NEXT GAME STARTS HERE</small></div>
+</section>
+<section id="katalog">
+ <div class="section-head"><div><div class="eyebrow">Koleksi terbaru</div><h2>Jelajahi game</h2></div><p id="resultCount">8 produk</p></div>
+ <div class="toolbar"><input class="search" id="search" placeholder="Cari judul game..." oninput="renderProducts()">
+ <div class="filters"><button class="filter active" onclick="setFilter('Semua',this)">Semua</button><button class="filter" onclick="setFilter('PC',this)">PC</button><button class="filter" onclick="setFilter('PlayStation',this)">PlayStation</button><button class="filter" onclick="setFilter('Xbox',this)">Xbox</button><button class="filter" onclick="setFilter('Nintendo',this)">Nintendo</button></div></div>
+ <div class="grid" id="products"></div>
+</section>
+<section id="cara-kerja" class="info">
+ <div><b>🎮 Pilih game</b><p>Gunakan pencarian dan filter untuk menemukan game yang kamu cari.</p></div>
+ <div><b>🛒 Masukkan keranjang</b><p>Kumpulkan beberapa produk sebelum menghubungi penjual.</p></div>
+ <div><b>🤝 Lanjutkan transaksi</b><p>Pesanan diteruskan ke WhatsApp penjual untuk konfirmasi stok dan pembayaran.</p></div>
+</section>
+<section id="tentang" style="padding-bottom:55px"><div class="eyebrow">Tentang GameHub</div><h2>Tempat berkumpulnya para gamer.</h2><p style="color:var(--muted);max-width:700px">GameHub adalah template marketplace game. Ganti katalog, harga, nomor WhatsApp, serta kebijakan toko sebelum digunakan untuk transaksi sungguhan.</p></section>
+</main>
+<footer><div class="wrap footer-in"><span>© 2026 GameHub. Dibuat untuk para gamer.</span><span>Pastikan legalitas dan keaslian produk sebelum membeli.</span></div></footer>
+<div class="drawer-bg" id="drawer" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawer-head"><h2>Keranjangmu</h2><button class="close" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="cart-total"><span>Total</span><span id="total">Rp0</span></div><button class="btn" style="width:100%" onclick="checkout()">Pesan via WhatsApp</button><p class="notice">Demo: atur nomor WhatsApp penjual pada kode website sebelum dipublikasikan. Harga dan stok perlu dikonfirmasi oleh penjual.</p></aside></div>
+<script>
+const SELLER_WHATSAPP = "6281234567890"; // GANTI dengan nomor WhatsApp penjual, format kode negara tanpa +
+const games = [
+ {id:1,name:"Cyberpunk 2077",platform:"PC",genre:"RPG • Open World",price:399000,art:"linear-gradient(135deg,#f0a52d,#9e254f 60%,#281b48)",short:"CYBERPUNK"},
+ {id:2,name:"Elden Ring",platform:"PC",genre:"Action RPG",price:599000,art:"linear-gradient(135deg,#c5a45b,#4d5538 60%,#17251e)",short:"ELDEN RING"},
+ {id:3,name:"Grand Theft Auto V",platform:"PlayStation",genre:"Action • Open World",price:299000,art:"linear-gradient(135deg,#6bc5a4,#26758a 55%,#19324d)",short:"GRAND THEFT AUTO"},
+ {id:4,name:"Forza Horizon 5",platform:"Xbox",genre:"Racing",price:499000,art:"linear-gradient(135deg,#f6a04d,#e15b8c 55%,#4b398b)",short:"FORZA HORIZON"},
+ {id:5,name:"Red Dead Redemption 2",platform:"PC",genre:"Action • Adventure",price:449000,art:"linear-gradient(135deg,#b85a39,#542b2a 60%,#171923)",short:"RED DEAD"},
+ {id:6,name:"The Legend of Zelda",platform:"Nintendo",genre:"Adventure",price:699000,art:"linear-gradient(135deg,#82b85c,#347a6d 60%,#18394c)",short:"ZELDA"},
+ {id:7,name:"God of War Ragnarök",platform:"PlayStation",genre:"Action • Adventure",price:649000,art:"linear-gradient(135deg,#74a7b5,#365a7c 60%,#1c2546)",short:"GOD OF WAR"},
+ {id:8,name:"Minecraft",platform:"PC",genre:"Sandbox",price:289000,art:"linear-gradient(135deg,#76a94e,#397c58 55%,#21465b)",short:"MINECRAFT"}
+];
+let filter="Semua", cart=JSON.parse(localStorage.getItem("gamehub-cart")||"[]");
+const rupiah=n=>new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+function renderProducts(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=games.filter(g=>(filter==="Semua"||g.platform===filter)&&g.name.toLowerCase().includes(q));
+ document.getElementById("resultCount").textContent=list.length+" produk";
+ document.getElementById("products").innerHTML=list.length?list.map(g=>`<article class="card"><div class="cover" style="background:${g.art}">${g.short}</div><div class="card-body"><div class="tag">${g.platform}</div><h3>${g.name}</h3><div class="meta">${g.genre}</div><div class="price-row"><span class="price">${rupiah(g.price)}</span><button class="add" onclick="addCart(${g.id})">+ Keranjang</button></div></div></article>`).join(""):'<div class="empty">Game tidak ditemukan. Coba kata kunci lain.</div>';
+}
+function setFilter(f,el){filter=f;document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));el.classList.add("active");renderProducts()}
+function save(){localStorage.setItem("gamehub-cart",JSON.stringify(cart));document.getElementById("count").textContent=cart.reduce((a,b)=>a+b.qty,0)}
+function addCart(id){let item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});save()}
+function openCart(){renderCart();document.getElementById("drawer").classList.add("show")}
+function closeCart(){document.getElementById("drawer").classList.remove("show")}
+function renderCart(){
+ const el=document.getElementById("cartItems");
+ el.innerHTML=cart.length?cart.map(c=>{let g=games.find(x=>x.id===c.id);return `<div class="cart-item"><div><b>${g.name}</b><small>${c.qty} × ${rupiah(g.price)}</small></div><div><b>${rupiah(g.price*c.qty)}</b><br><button class="filter" onclick="removeItem(${g.id})">Hapus</button></div></div>`}).join(""):'<p style="color:var(--muted)">Keranjang masih kosong.</p>';
+ document.getElementById("total").textContent=rupiah(cart.reduce((s,c)=>s+games.find(g=>g.id===c.id).price*c.qty,0));
+}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save();renderCart()}
+function checkout(){
+ if(!cart.length){alert("Keranjang masih kosong.");return}
+ const lines=cart.map(c=>{let g=games.find(x=>x.id===c.id);return `• ${g.name} (${g.platform}) x${c.qty} — ${rupiah(g.price*c.qty)}`});
+ const total=cart.reduce((s,c)=>s+games.find(g=>g.id===c.id).price*c.qty,0);
+ const msg=`Halo, saya ingin memesan game berikut:\\n\\n${lines.join("\\n")}\\n\\nTotal: ${rupiah(total)}\\nMohon konfirmasi stok dan cara pembayarannya.`;
+ if(SELLER_WHATSAPP==="6281234567890"){alert("Atur nomor WhatsApp penjual terlebih dahulu di bagian SELLER_WHATSAPP pada file index.html.");return}
+ window.open(`https://wa.me/${SELLER_WHATSAPP}?text=${encodeURIComponent(msg)}`,"_blank");
+}
+renderProducts();save();
+</script>
+</body></html>
